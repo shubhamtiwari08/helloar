@@ -10,3 +10,10 @@ input{
   @apply border-2 border-tertiary rounded-md p-2;
 }
 
+th{
+  @apply p-4 text-center border-b-2 ;
+}
+
+td{
+  @apply px-4  text-center border-b-2;
+}

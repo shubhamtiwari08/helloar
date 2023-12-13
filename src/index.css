@@ -10,4 +10,10 @@
     color: white;
     border-radius: 12px;
    }
+
+   .btn-secondary{
+    background-color: theme("colors.secondary");
+    padding: 0.3rem 1rem;
+    color: theme("colors.base");
+   }
 }

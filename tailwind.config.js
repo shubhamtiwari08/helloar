@@ -12,6 +12,7 @@ module.exports = {
         primary:'#552583',
         base:'#101920',
         tertiary:"#D0D3D4",
+        secondary:"#FDB927"
       },
      
       

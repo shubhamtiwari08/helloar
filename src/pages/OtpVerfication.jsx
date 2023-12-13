@@ -43,6 +43,8 @@ function OtpVerfication() {
           ))}
         </div>
         <button className="btn-primary">Verify</button>
+        <p>Resend Otp</p>
+        <p>Use Another number</p>
       </div>
     </div>
   );
