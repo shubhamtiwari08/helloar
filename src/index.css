@@ -2,18 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-
-@layer components{
-   .btn-primary{
-    background-color: theme('colors.primary');
+@layer components {
+  .btn-primary {
+    background-color: theme("colors.primary");
     padding: 0.5rem;
     color: white;
     border-radius: 12px;
-   }
+  }
 
-   .btn-secondary{
+  .btn-secondary {
     background-color: theme("colors.secondary");
     padding: 0.3rem 1rem;
     color: theme("colors.base");
-   }
+  }
+
+  .range-input {
+    width: 100%;
+    height: 2px;
+    border-radius: 0;
+    padding: 0;
+    appearance: none;
+    background-color: black;
+    border: none;
+  }
+
+  .range-input::-webkit-slider-thumb {
+    appearance: none;
+    width: 1rem; /* Set the width of the slider knob */
+    height: 1rem; /* Set the height of the slider knob */
+    background-color: yellow; /* Set the color of the slider knob */
+    border: 1px solid #000; /* Optional: Add a border to the slider knob */
+    border-radius: 50%;
+  }
+
+  .range-input::-moz-range-thumb {
+    /* Styles for Firefox */
+    width: 1rem;
+    height: 1rem;
+    background-color: yellow;
+    border: 1px solid #000;
+    border-radius: 50%;
+  }
+
+  .range-input:focus {
+    outline: none; /* Remove default focus styles */
+  }
 }

@@ -1,36 +1,36 @@
 export const songs = [
     {
       id: 1,
-      songName: "kesariya",
-      songLink: "https://youtu.be/BddP6PYo2gs?si=JlKVmXvryg4FkSkT",
+      songName: "BloodStream",
+      songLink: "https://res.cloudinary.com/dmyost0l3/video/upload/v1702528974/Helloar/Ed_Sheeran_-_Bloodstream_Official_Audio_dlrkbs.mp3",
       songSource: "Youtube",
       thumbnail: "https://source.unsplash.com/300x200/?music"
     },
     {
       id: 2,
-      songName: "chaleya",
-      songLink: "https://youtu.be/VAdGW7QDJiU?si=BkYK5goQ9Kfnjxkq",
+      songName: "Beautiful Scars",
+      songLink: "https://res.cloudinary.com/dmyost0l3/video/upload/v1702528915/Helloar/Maximillian_-_Beautiful_Scars_Lyrics_tdtyuj.mp3",
       songSource: "Youtube",
       thumbnail: "https://source.unsplash.com/300x200/?music"
     },
     {
       id: 3,
-      songName: "choti choti gal",
-      songLink: "https://youtu.be/3S9moHgTgcU?si=iHWWNNkhGSq5tQ_j",
+      songName: "Mere Gaon Aoge",
+      songLink: "https://res.cloudinary.com/dmyost0l3/video/upload/v1702528488/Helloar/Mere_Gaon_Aaoge_by_RAHGIR_%E0%A4%AE%E0%A4%B0_%E0%A4%97%E0%A4%B5_%E0%A4%86%E0%A4%93%E0%A4%97_-_%E0%A4%B0%E0%A4%B9%E0%A4%97%E0%A4%B0_New_original_song_x0w8so.mp3",
       songSource: "Youtube",
       thumbnail: "https://source.unsplash.com/300x200/?music"
     },
     {
       id: 4,
-      songName: "lut put gaya",
-      songLink: "https://youtu.be/9Z79T_o4v8c?si=ea4wokMGPDMrpmks",
+      songName: "Dil Nu",
+      songLink: "https://res.cloudinary.com/dmyost0l3/video/upload/v1702528440/Helloar/Dil_nu_Acoustic_Version_n8eznz.mp3",
       songSource: "Youtube",
       thumbnail: "https://source.unsplash.com/300x200/?music"
     },
     {
       id: 5,
-      songName: "husn",
-      songLink: "https://youtu.be/gJLVTKhTnog?si=KxMbosd8BQck2-Xw",
+      songName: "Brown Munde",
+      songLink: "https://res.cloudinary.com/dmyost0l3/video/upload/v1702528268/Helloar/BROWN_MUNDE_-_AP_DHILLON_GURINDER_GILL_SHINDA_KAHLON_GMINXR_rfwwc1.mp3",
       songSource: "Youtube",
       thumbnail: "https://source.unsplash.com/300x200/?music"
     }

@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Login() {
+    
   return (
     <div className=' flex justify-center items-center w-full h-screen'>
         <div className='w-96 flex flex-col gap-2'>
