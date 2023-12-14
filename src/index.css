@@ -47,4 +47,9 @@
   .range-input:focus {
     outline: none; /* Remove default focus styles */
   }
+
+  .active-class{
+    background-color: rgba(100, 219, 246, 0.468);
+    
+  }
 }

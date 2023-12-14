@@ -10,6 +10,9 @@ function AudioPlayer({ audioElm,setCurrentTime, isPlaying, setIsPlaying, songDat
     const id = songData.id;
     if(Number(id)>1){
     handleSelectSong(Number(id)-1)
+    if(!isPlaying){
+        setIsPlaying(true)
+    }
     }
   };
 
@@ -17,6 +20,7 @@ function AudioPlayer({ audioElm,setCurrentTime, isPlaying, setIsPlaying, songDat
     const id = songData.id;
    if(Number(id) < songList.length){
     handleSelectSong(Number(id)+1)
+    setIsPlaying(true)
    }
   };
 

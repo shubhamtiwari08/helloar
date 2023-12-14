@@ -8,7 +8,7 @@ function SongCell({data,handleDelete,handleSelectSong,selectedSong}) {
   return (
     <tr>
         <td className='flex items-center gap-4'>
-            <span className=' w-16 h-16 border-4 border-red-400 overflow-hidden'><img src={thumbnail} alt={songLink} className='inline' /></span>
+            <span className=' w-16 h-16 border-4 overflow-hidden'><img src={thumbnail} alt={songLink} className='inline' /></span>
             <span>{songName}</span>
         </td>
         <td>

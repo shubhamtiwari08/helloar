@@ -4,6 +4,7 @@ import AudioPlayer from "../components/AudioPlayer";
 import SongCell from "../components/SongCell";
 import { songs } from "../songdb/songs";
 import AddSongModal from "../components/AddSongModal";
+import { FaBackspace } from "react-icons/fa";
 
 function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -19,7 +20,7 @@ function Home() {
   //addsongtoggle
   const [addSongToggle, setAddSongToggle] = useState(false);
 
-  const [currentTime,setCurrentTime] = useState(0)
+  const [currentTime, setCurrentTime] = useState(0);
 
   const audioElm = useRef();
 
@@ -34,11 +35,12 @@ function Home() {
   };
 
   const onPlaying = (seekTime) => {
-     
     setCurrentTime(audioElm.current.currentTime);
+    setSelectedSong({
+        ...selectedSong,
+        "progress":currentTime 
+    })
   };
-  
-  
 
   const handleAddSong = (e) => {
     setAddSongToggle(!addSongToggle);
@@ -68,7 +70,13 @@ function Home() {
             Songs
           </NavLink>
         </div>
-        <button onClick={handleLogout}>Logout</button>
+        <button
+          onClick={handleLogout}
+          className="flex items-center justify-center"
+        >
+          {" "}
+          <FaBackspace /> Logout
+        </button>
       </nav>
       {/* main-songs-list */}
       <main className="w-full flex flex-col justify-between">
