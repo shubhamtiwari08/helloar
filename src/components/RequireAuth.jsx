@@ -1,8 +1,10 @@
 import React from 'react'
+import { Navigate } from 'react-router';
 
 function RequireAuth({children}) {
+    const token = localStorage.getItem('token')
   return (
-    <div>{children}</div>
+    true ? children : <Navigate to="/login" />
   )
 }
 

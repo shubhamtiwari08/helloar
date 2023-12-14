@@ -1,8 +1,50 @@
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router";
 
 function OtpVerfication() {
+
   //stores-otp
   const [otp, setOtp] = useState(["", "", "", ""]);
+
+  //state from previous route
+  const location = useLocation()
+
+  const navigate = useNavigate()
+
+   const {phoneNumber,requestId} = location.state;
+
+  console.log("location", location)
+
+  console.log(otp.join(''))
+  //otpverification
+  const handleVerify= async() =>{
+   
+    try {
+        const res = await fetch("https://dev.api.goongoonalo.com/v1/auth/verify_otp",{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+              },
+            body:JSON.stringify({
+                phoneNumber:phoneNumber,
+                requestId:requestId,
+                otp:otp.join('')
+            })
+        })
+
+        console.log({
+            phoneNumber,
+            requestId,
+            otp:otp.join('')
+        })
+        const data = await res.json();
+        console.log(data)
+        localStorage.setItem('token',data.token)
+        navigate('/')
+    } catch (error) {
+        console.log(error)
+    }
+  }
 
 
 
@@ -18,6 +60,7 @@ function OtpVerfication() {
       }
 
       setOtp(newOtp)
+      console.log(otp)
   }
 
   return (
@@ -42,7 +85,7 @@ function OtpVerfication() {
             />
           ))}
         </div>
-        <button className="btn-primary">Verify</button>
+        <button className="btn-primary" onClick={handleVerify}>Verify</button>
         <p>Resend Otp</p>
         <p>Use Another number</p>
       </div>

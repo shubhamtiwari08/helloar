@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import AudioPlayer from "../components/AudioPlayer";
 import SongCell from "../components/SongCell";
 import { songs } from "../songdb/songs";
@@ -19,6 +19,8 @@ function Home() {
 
 
     const audioElm = useRef()
+
+    const navigate = useNavigate()
 
 
   
@@ -45,6 +47,11 @@ function Home() {
        e.stopPropagation()
     }
 
+    const handleLogout = () =>{
+        localStorage.removeItem('token')
+        navigate('/login')
+    }
+
     useEffect(()=>{
         if (isPlaying) {
             audioElm.current.play()
@@ -64,7 +71,7 @@ function Home() {
           Songs
         </NavLink>
         </div>
-        <button>Logout</button>
+        <button onClick={handleLogout}>Logout</button>
       </nav>
       {/* main-songs-list */}
       <main className="w-full flex flex-col justify-between">
@@ -92,7 +99,7 @@ function Home() {
         </table>
         </div>
         <audio src={selectedSong.songLink} ref={audioElm} onTimeUpdate={onPlaying} />
-        <AudioPlayer  setIsPlaying={setIsPlaying} isPlaying={isPlaying} songData={selectedSong} audioValue={audioValue} setAudioValue={setAudioValue} audioElm={audioElm} />
+        <AudioPlayer handleSelectSong={handleSelectSong}  setIsPlaying={setIsPlaying} isPlaying={isPlaying} songData={selectedSong} audioValue={audioValue} setAudioValue={setAudioValue} audioElm={audioElm} songList={songList} />
       </main>
       {addSongToggle && <div className="absolute w-full bg-[#0000004c] h-screen flex items-center justify-center z-10" onClick={(e)=>handleAddSong(e)}><div onClick={(event) => { event.stopPropagation(); }}><AddSongModal handleAddSong={handleAddSong} songList={songList} setSongList={setSongList}/></div></div> }
     </div>

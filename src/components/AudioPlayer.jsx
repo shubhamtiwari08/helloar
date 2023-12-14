@@ -1,17 +1,26 @@
 import React from "react";
 import { FaPlay, FaPause, FaStepForward, FaStepBackward } from "react-icons/fa";
 
-function AudioPlayer({ src, isPlaying, setIsPlaying, songData,audioValue,setAudioValue}) {
+function AudioPlayer({  isPlaying, setIsPlaying, songData,audioValue,setAudioValue,handleSelectSong,songList}) {
 
 
   const handlePlay = () => {
 
+
   }
   
-  const handlePrevious = () => {};
+  const handlePrevious = () => {
+    const id = songData.id;
+    if(Number(id)>1){
+    handleSelectSong(Number(id)-1)
+    }
+  };
 
   const handleNext = () => {
-
+    const id = songData.id;
+   if(Number(id) < songList.length){
+    handleSelectSong(Number(id)+1)
+   }
   };
 
   const handlePlayPause = () => {
@@ -23,9 +32,10 @@ function AudioPlayer({ src, isPlaying, setIsPlaying, songData,audioValue,setAudi
   };
 
   const handleSongLength = (e) => {
+    const progress = (e.target.value/audioValue?.length)*100
    
-    setAudioValue({...songData, "progress":(e.target.value/audioValue?.length)*100});
-    console.log(audioValue.length,"ch")
+    setAudioValue({...songData, "progress":progress});
+    console.log(audioValue.length,"ch",audioValue)
   }
 
   return (
