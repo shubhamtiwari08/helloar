@@ -23,7 +23,9 @@ function AudioPlayer({ src, isPlaying, setIsPlaying, songData,audioValue,setAudi
   };
 
   const handleSongLength = (e) => {
-    setAudioValue({...songData, "progess":e.target.value});
+   
+    setAudioValue({...songData, "progress":(e.target.value/audioValue?.length)*100});
+    console.log(audioValue.length,"ch")
   }
 
   return (
@@ -33,14 +35,18 @@ function AudioPlayer({ src, isPlaying, setIsPlaying, songData,audioValue,setAudi
         name="audio"
         id="audio"
         className="range-input"
-        value={audioValue?.currentTime}
-        onChange={(e)=>handleSongLength(e)}
+        min='0'
+        step='1'
+        value={(audioValue?.progress) || 0}
+        onChange={handleSongLength}
         
       />
       <div className="w-full flex justify-between items-center ">
         <div className="w-16 h-16 border-2">
-          <img src={songData.thumbnail} alt={songData.songName}  />
+          <img src={songData.thumbnail} alt={songData.songName} />
+         
         </div>
+        <p>{songData.songName}</p>
         <div className="w-20 flex justify-between pr-2">
           <button onClick={handlePrevious}>
             <FaStepBackward />

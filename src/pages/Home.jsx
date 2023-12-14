@@ -14,6 +14,9 @@ function Home() {
     const [selectedSong, setSelectedSong] = useState(songList[0])
     //audio_seek_bar
     const [audioValue,setAudioValue] = useState({...selectedSong,"progress":0})
+    //addsongtoggle
+    const [addSongToggle,setAddSongToggle] = useState(false)
+
 
     const audioElm = useRef()
 
@@ -33,8 +36,13 @@ function Home() {
         const currentTime = audioElm.current.currentTime;
 
 
-        setAudioValue({...selectedSong,"progress":currentTime,"length":duration})
+        setAudioValue({...selectedSong,"progress":(currentTime/duration)*100,"length":duration})
 
+    }
+
+    const handleAddSong = (e) =>{
+       setAddSongToggle(!addSongToggle)
+       e.stopPropagation()
     }
 
     useEffect(()=>{
@@ -64,7 +72,7 @@ function Home() {
         <header>
             <div className="w-full p-4 flex justify-between border-b-2">
                 <span className="text-2xl">Songs</span>
-                <button className="btn-secondary">Add Songs</button>
+                <button className="btn-secondary" onClick={(e)=>handleAddSong(e)}>Add Songs</button>
             </div>
         </header>
         <table className="w-full">
@@ -86,7 +94,7 @@ function Home() {
         <audio src={selectedSong.songLink} ref={audioElm} onTimeUpdate={onPlaying} />
         <AudioPlayer  setIsPlaying={setIsPlaying} isPlaying={isPlaying} songData={selectedSong} audioValue={audioValue} setAudioValue={setAudioValue} audioElm={audioElm} />
       </main>
-      {/* <AddSongModal/> */}
+      {addSongToggle && <div className="absolute w-full bg-[#0000004c] h-screen flex items-center justify-center z-10" onClick={(e)=>handleAddSong(e)}><div onClick={(event) => { event.stopPropagation(); }}><AddSongModal handleAddSong={handleAddSong} songList={songList} setSongList={setSongList}/></div></div> }
     </div>
   );
 }

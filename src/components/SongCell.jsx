@@ -3,7 +3,7 @@ import { FaPlay, FaTrash } from 'react-icons/fa'
 
 function SongCell({data,handleDelete,handleSelectSong}) {
 
-     const {id,songName,songSource,songLink,thumbnail}=data
+     const {id,songName,songSource,songLink,addedOn,thumbnail}=data
 
   return (
     <tr>
@@ -15,7 +15,7 @@ function SongCell({data,handleDelete,handleSelectSong}) {
             <span>{songSource}</span>
         </td>
         <td>
-            <span>AddedOn</span>    
+            <span>{addedOn}</span>    
         </td>
         <td>
             <button className='w-10 h-10 rounded-full bg-yellow-300 flex items-center justify-center' onClick={()=>handleSelectSong(id)}> <FaPlay className='w-4 h-4 text-white' /></button>

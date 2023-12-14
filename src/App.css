@@ -10,9 +10,7 @@ input{
   @apply border-2 border-tertiary rounded-md p-2;
 }
 
-label{
-  @apply block;
-}
+ 
 
 th{
   @apply p-4 text-center border-b-2 ;
