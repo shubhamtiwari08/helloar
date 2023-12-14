@@ -7,20 +7,20 @@ function AudioPlayer({ audioElm,setCurrentTime, isPlaying, setIsPlaying, songDat
   
   
   const handlePrevious = () => {
+    audioElm.current.pause()
     const id = songData.id;
     if(Number(id)>1){
     handleSelectSong(Number(id)-1)
-    if(!isPlaying){
-        setIsPlaying(true)
-    }
+    setIsPlaying(false)
     }
   };
 
   const handleNext = () => {
+
     const id = songData.id;
    if(Number(id) < songList.length){
     handleSelectSong(Number(id)+1)
-    setIsPlaying(true)
+    setIsPlaying(false)
    }
   };
 

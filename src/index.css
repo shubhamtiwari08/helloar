@@ -48,8 +48,13 @@
     outline: none; /* Remove default focus styles */
   }
 
-  .active-class{
+  .active-class.active{
     background-color: rgba(100, 219, 246, 0.468);
-    
+    border-right: 4px solid rgb(0, 183, 224) ;
+    width: 100%;
+    display: block;
+    text-align: end;
+   padding-right: 1rem;
   }
+  
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import AudioPlayer from "../components/AudioPlayer";
 import SongCell from "../components/SongCell";
 import { songs } from "../songdb/songs";
@@ -11,7 +11,11 @@ function Home() {
   //songdata
   const [songList, setSongList] = useState([...songs]);
   //selectedSong
-  const [selectedSong, setSelectedSong] = useState(songList[0]);
+  const [selectedSong, setSelectedSong] = useState({
+    ...songList[0],
+    progress: 0,
+    length: 0,
+  });
   //audio_seek_bar
   const [audioValue, setAudioValue] = useState({
     ...selectedSong,
@@ -24,6 +28,8 @@ function Home() {
 
   const audioElm = useRef();
 
+  const location = useLocation()
+
   const navigate = useNavigate();
 
   const handleDelete = (id) => {
@@ -31,15 +37,19 @@ function Home() {
   };
 
   const handleSelectSong = (id) => {
-    setSelectedSong(songList.filter((song) => song.id == id)[0]);
+   
+    const song = songList.filter((song) => song.id == id)[0];
+    setSelectedSong({ ...song, progress: 0, length: 0 });
+     setIsPlaying(false)
+    
   };
 
   const onPlaying = (seekTime) => {
     setCurrentTime(audioElm.current.currentTime);
     setSelectedSong({
-        ...selectedSong,
-        "progress":currentTime 
-    })
+      ...selectedSong,
+      progress: currentTime,
+    });
   };
 
   const handleAddSong = (e) => {
@@ -53,20 +63,29 @@ function Home() {
   };
 
   useEffect(() => {
-    if (isPlaying) {
-      audioElm.current.play();
-    } else {
-      audioElm.current.pause();
-    }
+   
+        if (isPlaying) {
+          console.log("Playing");
+          const playPromise = audioElm.current.play();
+          if (playPromise !== undefined) {
+            playPromise.catch((error) => {
+              console.error("Failed to start playback:", error);
+            });
+          }
+        } else {
+          console.log("Paused");
+          audioElm.current.pause();
+        }
+     
   }, [isPlaying]);
 
   return (
     <div className="flex w-full">
       {/* navingation-container */}
       <nav className="flex flex-col justify-between w-56 h-screen border-r-2">
-        <div>
+        <div className="flex flex-col items-center justify-center gap-6">
           <h2>Logo</h2>
-          <NavLink to="/" activeClassName="active-class">
+          <NavLink to="/" className={location.pathname === '/' ? 'active-class' : ''}>
             Songs
           </NavLink>
         </div>
