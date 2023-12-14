@@ -1,7 +1,7 @@
 import React from 'react'
-import { FaPlay, FaTrash } from 'react-icons/fa'
+import { FaPause, FaPlay, FaTrash } from 'react-icons/fa'
 
-function SongCell({data,handleDelete,handleSelectSong}) {
+function SongCell({data,handleDelete,handleSelectSong,selectedSong}) {
 
      const {id,songName,songSource,songLink,addedOn,thumbnail}=data
 
@@ -18,7 +18,7 @@ function SongCell({data,handleDelete,handleSelectSong}) {
             <span>{addedOn}</span>    
         </td>
         <td>
-            <button className='w-10 h-10 rounded-full bg-yellow-300 flex items-center justify-center' onClick={()=>handleSelectSong(id)}> <FaPlay className='w-4 h-4 text-white' /></button>
+            <button className='w-10 h-10 rounded-full bg-yellow-300 flex items-center justify-center text-white' onClick={()=>handleSelectSong(id)}>{selectedSong.id == id ? <FaPause/>:<FaPlay/>}</button>
         </td>
         <td>
             <button onClick={()=>handleDelete(id)}><FaTrash/></button>

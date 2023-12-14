@@ -1,13 +1,10 @@
 import React from "react";
 import { FaPlay, FaPause, FaStepForward, FaStepBackward } from "react-icons/fa";
 
-function AudioPlayer({  isPlaying, setIsPlaying, songData,audioValue,setAudioValue,handleSelectSong,songList}) {
+function AudioPlayer({ audioElm,setCurrentTime, isPlaying, setIsPlaying, songData,audioValue,setAudioValue,handleSelectSong,songList,onPlaying,setSelectedSong,}) {
 
 
-  const handlePlay = () => {
-
-
-  }
+  
   
   const handlePrevious = () => {
     const id = songData.id;
@@ -29,14 +26,23 @@ function AudioPlayer({  isPlaying, setIsPlaying, songData,audioValue,setAudioVal
     }else{
         setIsPlaying(!isPlaying)
     }
+
   };
 
-  const handleSongLength = (e) => {
-    const progress = (e.target.value/audioValue?.length)*100
-   
-    setAudioValue({...songData, "progress":progress});
-    console.log(audioValue.length,"ch",audioValue)
+  const handleSlide = (e) =>{
+    const seekTime = e.target.value;
+    audioElm.current.currentTime = seekTime;
+    
+    setSelectedSong({
+        ...songData,
+        "progress":seekTime 
+    })
+
+    setCurrentTime(seekTime)
+     
   }
+
+  
 
   return (
     <div className="w-full">
@@ -45,10 +51,9 @@ function AudioPlayer({  isPlaying, setIsPlaying, songData,audioValue,setAudioVal
         name="audio"
         id="audio"
         className="range-input"
-        min='0'
-        step='1'
-        value={(audioValue?.progress) || 0}
-        onChange={handleSongLength}
+        
+        value={(songData?.progress) || 0}
+        onChange={handleSlide}
         
       />
       <div className="w-full flex justify-between items-center ">
