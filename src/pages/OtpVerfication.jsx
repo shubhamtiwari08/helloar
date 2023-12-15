@@ -32,11 +32,7 @@ function OtpVerfication() {
             })
         })
 
-        console.log({
-            phoneNumber,
-            requestId,
-            otp:otp.join('')
-        })
+        
         const data = await res.json();
         console.log(data)
         localStorage.setItem('token',data.token)
@@ -68,7 +64,7 @@ function OtpVerfication() {
       <div className="w-96 flex flex-col gap-2">
         <h2>OTP Verfication</h2>
         <p>
-          We have sent and OTP to +919889898989. Please enter the code received
+          We have sent and OTP to {phoneNumber}.  Please enter the code received
           to verify.
         </p>
         <div className="flex justify-between">
